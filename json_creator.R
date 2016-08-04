@@ -1,5 +1,10 @@
 #install.packages("rjson")
 #install.packages("jsonlite")
+#install.packages("rmongodb")
+install.packages("RMongo")
+library(RMongo)
+#library(rmongodb)
+detach("package:rmongodb", unload=TRUE)
 #library(rjson)
 detach("package:rjson", unload=TRUE)
 library(jsonlite)
@@ -37,4 +42,13 @@ text <- apply(m,MARGIN = 1,
 
 json <- toJSON(text)
 write(json,"E:/R/support/r_generated.json")
+
+#MONGO
+
+# mdb <- mongo.create(host = "localhost")
+# coll <- "database.collection"
+# mongo.is.connected()
+
+mdb <- mongoDbConnect('db')
+print(dbShowCollections(mdb))
 
